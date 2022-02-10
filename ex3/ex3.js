@@ -43,6 +43,18 @@ function task2(min, max)
         }
     }
 }
+/* teacher's solution
+let l1 = evenNumbers.length;
+let l2 = oddNumbers.length;
+
+for (let i = 0; i < l1; i++){
+    console.log(evenNumbers[i]); // to print one line at a time?
+}
+for (let i = 0; i < l1; i++){
+    console.log(evenNumbers[i]); // to print one line at a time?
+}
+task2(-3, 4); // calls the function
+*/
 
 console.log(task2(3, 7));
 // this also prints undefined but not sure how I could avoid printing that
@@ -74,6 +86,9 @@ function task3(min, max)
     // print array
     return numbers;
 }
+// teacher's solution
+// const catenated = evenNumbers.concat(oddNumbers.reverse());
+// console.log(catenated);
 
 console.log(task3(3, 7));
 
@@ -89,5 +104,9 @@ function task4(testString)
     // return true if string reversed is the same, false if not
     return reverseString == lowerTestString;
 }
+
+// teacher's solution
+// return testString.toLowerCase() === testString.split('').reverse().join('').toLowerCase();
+// console.log('Task 4: ' + task4('Step on NO pets'));
 
 console.log(task4("Step on no pets"));
