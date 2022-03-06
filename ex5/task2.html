@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Task 2</title>
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: Verdana, sans-serif;
+            }
+            .tabbutton {
+                width: 50%;
+                border: none;
+                outline: none;
+                font-size: 28px;
+                float: left;
+                padding: 32px;
+                font-family: 'Gill Sans', sans-serif;
+                font-size: 40px;
+                font-weight: bold;
+            }
+            #button1 {
+                background-color: #31c7ae;
+                color: black;
+            }
+            #button2 {
+                background-color: #165a4f;
+                color: white;
+            }
+            .tabcontent {
+                display: none;
+                height: 100%;
+                padding: 120px 40px;
+            }
+            #tab1 {
+                color: black;
+                background-color: #31c7ae;
+            }
+            #tab2 {
+                color: white;
+                background-color: #165a4f;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <!--tab/button area-->
+        <div class="tab">
+            <button id="button1" class="tabbutton" onclick="openTab('tab1')">Tab 1</button>
+            <button id="button2" class="tabbutton" onclick="openTab('tab2')">Tab 2</button>
+        </div>
+
+        <!--content area-->
+        <div id="tab1" class="tabcontent">
+            <h2>Tab 1 Heading here</h2>
+            <p>Hello, this is content for tab 1.</p>
+        </div>
+        <div id="tab2" class="tabcontent">
+            <h2>Tab 2 Heading here</h2>
+            <p>This text is white because the background is a darker color.</p>
+        </div>
+
+        <script>
+
+            // function to show content between tabs (hide content, display chosen one)
+            function openTab(tab) {
+                let tabcontent;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (let i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                document.getElementById(tab).style.display = "block";
+            }
+
+            // open by default
+            document.getElementById("button1").click();
+        </script>
+
+    </body>
+</html>

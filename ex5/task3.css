@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(230, 203, 146);
+}
+
+h1 {
+    color: black;
+    font-family:'Segoe UI', Tahoma, Verdana, sans-serif
+}
+
+p, label {
+    font-family: sans-serif;
+}
+
+table {
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+th {
+    background-color: rgb(32, 95, 79);
+    color: white;
+    padding: 8px;
+    border: 1px solid black;
+    font-weight: bolder;
+}
+
+tr, td {
+    background-color: rgb(106, 173, 158);
+    padding: 8px 30px;
+    border: 1px solid black;
+}
+
+.redpoints td {
+    background-color: rgb(252, 88, 88);
+}
+
+button, input[type=button] {
+    border-radius: 50%;
+    padding: 8px;
+    background-color: rgb(13, 114, 40);
+    color: white;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+input {
+    background-color: beige;
+}
