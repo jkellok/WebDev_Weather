@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script defer src="ui.js"></script>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<html>
+
+    <head>
+        <title>Course Assingment</title>
+    </head>
+
+    <body>
+        <!--buttons for views-->
+        <div class="tab">
+            <button id="button1" class="viewbutton" onclick="openView('view1'); getDataLatest30()">Latest 30</button>
+            <button id="button2" class="viewbutton" onclick="openView('view2'); getDataTemperature(); openSelect('time-menu-temperature', '1')">Temperature</button>
+            <button id="button3" class="viewbutton" onclick="openView('view3'); getDataWindDirection(); openSelect('time-menu-winddirection', '1')">Wind Direction</button>
+            <button id="button4" class="viewbutton" onclick="openView('view4');">Info</button>
+            <button id="button5" class="viewbutton" onclick="openView('view5'); getDataSelection();">Selected Weather</button>
+        </div>
+        <br>
+
+        <!--views-->
+        <div id="view1" class="viewcontent">
+            <br>
+            <h2>30 latest weather measurements</h2>
+            <div id="datalatest30"></div>
+        </div>
+
+        <div id="view2" class="viewcontent">
+            <br>
+            <h2>20 latest temperature measurements</h2>
+            <div id="drop-down">
+                <label for="time-menu">Choose a time interval:</label>
+                <select name="time-menu" id="time-menu-temperature">
+                    <option id="1" value="now" onclick="getDataTemperature()" selected>Now</option>
+                    <option id="2" value="24 hours" onclick="getDataTemperature(24)">24 hours</option>
+                    <option id="3" value="48 hours" onclick="getDataTemperature(48)">48 hours</option>
+                    <option id="4" value="72 hours" onclick="getDataTemperature(72)">72 hours</option>
+                    <option id="5" value="1 week" onclick="getDataTemperature(1)">1 week</option>
+                </select>
+            </div>
+            <br>
+            <div class="chart-container">
+                <canvas id="chart1" width="200" height="100"></canvas>
+            </div>
+            <br>
+            <div id="data-temperature" class="datatable"></div>
+        </div>
+
+        <div id="view3" class="viewcontent">
+            <br>
+            <h2>20 latest wind direction measurements</h2>
+            <div id="drop-down">
+                <label for="time-menu">Choose a time interval:</label>
+                <select name="time-menu" id="time-menu-winddirection">
+                    <option id="1" value="now" onclick="getDataWindDirection()" selected>Now</option>
+                    <option id="2" value="24 hours" onclick="getDataWindDirection(24)">24 hours</option>
+                    <option id="3" value="48 hours" onclick="getDataWindDirection(48)">48 hours</option>
+                    <option id="4" value="72 hours" onclick="getDataWindDirection(72)">72 hours</option>
+                    <option id="5" value="1 week" onclick="getDataWindDirection(1)">1 week</option>
+                </select>
+            </div>
+            <br>
+            <div class="chart-container">
+                <canvas id="chart2" width="200" height="100"></canvas>
+            </div>
+            <br>
+            <div id="data-winddirection" class="datatable"></div>
+        </div>
+
+        <div id="view4" class="viewcontent">
+            <br>
+            <h2>Author information</h2>
+            <p><b>Name:</b> Juska Kellokumpu</p>
+            <p><b>Email:</b> juskakaro.kellokumpu@tuni.fi</p>
+            <p><b>Course:</b> 5G00DM03-3005 Basics of Web Development</p>
+        </div>
+
+        <div id="view5" class="viewcontent">
+            <br>
+            <h2>Select weather type and time interval</h2>
+            <div id="drop-down">
+                <label for="time-menu">Choose a type:</label>
+                <select name="time-menu" id="type-menu" onchange="getDataSelection()">
+                    <option id="1" value="light" selected>Light</option>
+                    <option id="2" value="Air_pres_1">Air Pressure</option>
+                    <option id="3" value="BMP_temp_1">BMP Temperature</option>
+                    <option id="4" value="DHT11__temp_1">DHT11 Temperature</option>
+                    <option id="5" value="humidity_in">Humidity in</option>
+                    <option id="6" value="humidity_out">Humidity out</option>
+                    <option id="7" value="rain">Rain</option>
+                    <option id="8" value="temperature">Temperature</option>
+                    <option id="9" value="wind_direction">Wind direction</option>
+                    <option id="10" value="wind_speed">Wind speed</option>
+                </select>
+            </div>
+            <div id="drop-down">
+                <label for="time-menu">Choose a time interval:</label>
+                <select name="time-menu" id="time-menu-all" onchange="getDataSelection()">
+                    <option id="1" value="now" selected>Now</option>
+                    <option id="2" value="24 hours">24 hours</option>
+                    <option id="3" value="48 hours">48 hours</option>
+                    <option id="4" value="72 hours">72 hours</option>
+                    <option id="5" value="1 week">1 week</option>
+                </select>
+            </div>
+            <br>
+            <div class="chart-container">
+                <canvas id="chart3" width="200" height="100"></canvas>
+            </div>
+            <br>
+            <div id="data-selection" class="datatable"></div>
+        </div>
+
+    </body>
+
+</html>
