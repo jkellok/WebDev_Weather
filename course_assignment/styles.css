@@ -11,7 +11,7 @@ button {
     border: 1px solid green;
     outline: none;
     float: inline-start;
-    padding: 20px;
+    padding: 50px 10px;
     font-weight: bold;
     text-align: center;
     margin-bottom: 2rem;
@@ -23,18 +23,45 @@ button:not(:last-child) {
 
 button:hover {
     background-color: #437917;
+    opacity: 0.7;
+}
+
+#button1:hover {
+    background: url(https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat center;
+    background-size: cover;
+    transition: .8s ease;
+}
+#button2:hover {
+    background: url(https://images.unsplash.com/photo-1562742862-512efda35b5b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80) no-repeat center;
+    background-size: cover;
+    transition: .8s ease;
+}
+#button3:hover {
+    background: url(https://images.unsplash.com/photo-1584267385494-9fdd9a71ad75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat center;
+    background-size: cover;
+    transition: .8s ease;
+}
+#button4:hover {
+    background: url(https://images.unsplash.com/photo-1566996675874-f00a61522322?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fHdlYXRoZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60) no-repeat center;
+    background-size: cover;
+    transition: .8s ease;
+}
+#button5:hover {
+    background: url(https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1335&q=80) no-repeat center;
+    background-size: cover;
+    transition: .8s ease;
 }
 
 button:active {
     background-color: #97db60;
     transform: translateY(4px);
+    transition: .1s ease;
 }
 
 .viewcontent {
     display: none;
     text-align: center;
     background-color: #7bc53f;
-    margin-top: 20px;
 }
 
 #view1 {

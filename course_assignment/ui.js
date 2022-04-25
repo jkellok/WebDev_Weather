@@ -1,6 +1,4 @@
-// this helps DATA_SOURCE to be intialized before declaration? or not....
 window.addEventListener("load", getDataLatest30);
-
 
 // Generate HTML based on an array of JS objects
 
@@ -32,6 +30,41 @@ function dataToHtmlRepresentationLatest30(dataObjects) {
     html += '</table>';
     return html;
 }
+
+function dataToHtmlRepresentationAllNow(dataObjects, type) {
+  let html = '<table>';
+  html += `<th>Row Number</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Measured Value</th>`
+
+  for (let i in dataObjects) {
+      const dataObject = dataObjects[i];
+      const date = new Date(dataObject.date_time);
+
+      let dataType = Object.keys(dataObject.data)[0];
+      let dataValue = Object.values(dataObject.data)[0]
+      let weatherType = type;
+
+      if (weatherType === dataType)
+      {
+        dataValue = Object.values(dataObject.data)[0];
+
+        html += `
+        <tr>
+          <td>${i}</td>
+          <td>${date.toLocaleDateString()}</td>
+          <td>${date.toLocaleTimeString()}</td>
+          <td>${dataValue}</td>
+        </tr>
+      `
+      }
+    }
+
+  html += '</table>';
+  return html;
+}
+
 
 function dataToHtmlRepresentationTemperature(dataObjects) {
   let html = '<table>';
@@ -239,16 +272,14 @@ function getDataWindDirection(timeInterval) {
                     .catch(error => console.error('Error on GET ' + error));
 }
 
-
 function getDataSelection() {
   let type = document.getElementById("type-menu").value;
   let timeInterval = document.getElementById("time-menu-all").value;
-  console.log(timeInterval)
-  let DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/light/';
+  let DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
   if (type === "light") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/light/';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/light/';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/light/23';
@@ -264,9 +295,9 @@ function getDataSelection() {
     }
   }
   else if (type === "Air_pres_1") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/Air_pres_1';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/Air_pres_1';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/Air_pres_1/23';
@@ -282,9 +313,9 @@ function getDataSelection() {
     }
   }
   else if (type === "BMP_temp_1") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/BMP_temp_1';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/BMP_temp_1';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/BMP_temp_1/23';
@@ -300,9 +331,9 @@ function getDataSelection() {
     }
   }
   else if (type === "DHT11__temp_1") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/DHT11__temp_1';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/DHT11__temp_1';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/DHT11__temp_1/23';
@@ -318,9 +349,9 @@ function getDataSelection() {
     }
   }
   else if (type === "DS1820_temp_1") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/DS1820_temp_1';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/DS1820_temp_1';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/DS1820_temp_1/23';
@@ -336,9 +367,9 @@ function getDataSelection() {
     }
   }
   else if (type === "humidity_in") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_in';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_in';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_in/23';
@@ -354,9 +385,9 @@ function getDataSelection() {
     }
   }
   else if (type === "humidity_out") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_out';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_out';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/humidity_out/23';
@@ -372,9 +403,9 @@ function getDataSelection() {
     }
   }
   else if (type === "rain") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/rain';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/rain';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/rain/23';
@@ -390,9 +421,9 @@ function getDataSelection() {
     }
   }
   else if (type === "temperature") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/temperature';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/temperature';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/temperature/23';
@@ -408,9 +439,9 @@ function getDataSelection() {
     }
   }
   else if (type === "wind_direction") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/wind_direction';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/wind_direction';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/wind_direction/23';
@@ -426,9 +457,9 @@ function getDataSelection() {
     }
   }
   else if (type === "wind_speed") {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/wind_speed';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     if (timeInterval === 'now') {
-      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/wind_speed';
+      DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
     }
     if (timeInterval === '24 hours') {
       DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/wind_speed/23';
@@ -445,19 +476,37 @@ function getDataSelection() {
   }
 
   else {
-    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/light/';
+    DATA_SOURCE_TIME = 'http://webapi19sa-1.course.tamk.cloud/v1/weather/';
   }
 
-  console.log(DATA_SOURCE_TIME);
+  //console.log(DATA_SOURCE_TIME);
 
   fetch(DATA_SOURCE_TIME).then(response => {return response.json()})
                     .then(data => {
                       const e = document.getElementById("data-selection");
-                      e.innerHTML = dataToHtmlRepresentationSelection(data, type);
 
                       const measurement = [];
                       const time = [];
                       const chartNumber = 3;
+
+                      if (DATA_SOURCE_TIME === 'http://webapi19sa-1.course.tamk.cloud/v1/weather/') {
+                        // if time interval is 'now', pick from 500
+                        e.innerHTML = dataToHtmlRepresentationAllNow(data, type);
+
+                        for (let i in data) {
+                          dataType = Object.keys(data[i].data)[0];
+                          dataValue = Object.values(data[i].data)[0];
+                          const date = new Date(data[i].date_time).toLocaleString();
+
+                          if (dataType === type) {
+                            measurement.push(dataValue);
+                            time.push(date);
+                          }
+                        }
+                      }
+                      else {
+                      // this is for other time intervals
+                      e.innerHTML = dataToHtmlRepresentationSelection(data, type);
 
                       for (let i in data) {
                         const date = new Date(data[i].date_time).toLocaleString();
@@ -495,8 +544,8 @@ function getDataSelection() {
                         if (type === 'wind_speed') {
                           measurement.push(data[i].wind_speed);
                         }
-
                         time.push(date);
+                        }
                       }
 
                       const chartType = 'line'
